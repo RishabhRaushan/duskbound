@@ -38,11 +38,6 @@ export default function AuthPage() {
     }
   }
 
-  const handleGuest = () => {
-    continueAsGuest()
-    navigate('/')
-  }
-
   return (
     <div className="auth-page noise-overlay">
       <div className="home-bg">
@@ -181,21 +176,6 @@ export default function AuthPage() {
             </motion.form>
           </AnimatePresence>
 
-          {/* Divider */}
-          <div className="auth-divider">
-            <span className="ornament-line" />
-            <span className="auth-divider-text">or</span>
-            <span className="ornament-line" />
-          </div>
-
-          {/* Guest */}
-          <button className="btn btn-ghost auth-guest" onClick={handleGuest}>
-            ◎ &nbsp; Continue as a Wanderer (Guest)
-          </button>
-
-          <p className="auth-note">
-            Guest progress is not saved between sessions.
-          </p>
         </motion.div>
       </div>
 

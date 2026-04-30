@@ -35,12 +35,8 @@ export function AuthProvider({ children }) {
     await supabase.auth.signOut()
   }
 
-  const continueAsGuest = () => {
-    setUser({ id: 'guest', email: 'guest@duskbound.game', user_metadata: { username: 'Wanderer' }, isGuest: true })
-  }
-
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut, continueAsGuest }}>
+    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,0 +1,273 @@
+.puzzle-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  padding: 16px;
+}
+
+.puzzle-modal {
+  background: rgba(13,10,6,0.98);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.85), 0 0 0 1px rgba(201,168,76,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.puzzle-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 24px 0;
+}
+
+.puzzle-type-label {
+  font-family: var(--font-title);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-mid);
+  margin-bottom: 4px;
+}
+
+.puzzle-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-cream);
+}
+
+.puzzle-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+.puzzle-close:hover { color: var(--text-cream); }
+
+.puzzle-content {
+  padding: 16px 24px;
+  flex: 1;
+}
+
+.puzzle-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-dim);
+}
+
+.puzzle-hint-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+.puzzle-hint-btn:hover { border-color: var(--gold-mid); color: var(--gold-main); }
+.hint-cost-badge { color: var(--failed-text); font-size: 0.6rem; }
+
+.puzzle-points {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--gold-mid);
+}
+
+.puzzle-error {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--failed-text);
+  padding: 8px 0;
+  text-align: center;
+}
+
+.puzzle-submit {
+  width: 100%;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.puzzle-description-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.hint-reveal {
+  margin: 0 24px 16px;
+  padding: 14px 16px;
+  background: rgba(60,42,12,0.3);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.hint-label { font-family: var(--font-title); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold-mid); text-transform: uppercase; display: block; margin-bottom: 6px; }
+.hint-text  { font-family: var(--font-body); font-style: italic; font-size: 0.95rem; color: var(--text-cream); line-height: 1.5; }
+
+/* ── Solved Message ── */
+.puzzle-solved-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0 8px;
+  text-align: center;
+}
+.solved-icon  { font-size: 2.8rem; }
+.solved-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-cream); font-weight: 600; }
+.solved-next  { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--text-secondary); line-height: 1.6; max-width: 360px; }
+.solved-note  { font-family: var(--font-title); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; }
+
+/* ── Chest code preview ── */
+.chest-code-preview {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0;
+}
+.code-digit {
+  width: 56px; height: 68px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,6,4,0.9);
+  border: 2px solid var(--gold-main);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--gold-bright);
+  box-shadow: 0 0 16px rgba(201,168,76,0.2);
+}
+
+/* ── Riddle ── */
+.riddle-wrap { display: flex; flex-direction: column; gap: 12px; }
+.riddle-scroll {
+  background: rgba(26,21,16,0.6);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold-mid);
+  padding: 16px;
+}
+.riddle-eyebrow { font-family: var(--font-title); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold-mid); text-transform: uppercase; margin-bottom: 8px; }
+.riddle-text { font-family: var(--font-body); font-style: italic; font-size: 1.05rem; color: var(--text-cream); line-height: 1.6; }
+.riddle-input { margin-top: 4px; }
+
+/* ── Math ── */
+.math-wrap { display: flex; flex-direction: column; gap: 16px; }
+.math-display {
+  background: rgba(8,6,4,0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  text-align: center;
+}
+.math-label { font-family: var(--font-title); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px; }
+.math-equation { font-family: 'Courier New', monospace; font-size: 2rem; color: var(--gold-main); letter-spacing: 0.1em; }
+.math-input { font-family: 'Courier New', monospace; font-size: 1.2rem; text-align: center; }
+
+/* ── Jigsaw ── */
+.jigsaw-wrap { display: flex; flex-direction: column; gap: 14px; }
+.jigsaw-header { display: flex; justify-content: space-between; align-items: center; }
+.jigsaw-instruction { font-family: var(--font-body); font-style: italic; font-size: 0.95rem; color: var(--text-secondary); }
+.jigsaw-moves { font-family: var(--font-title); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--text-dim); text-transform: uppercase; }
+.jigsaw-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background: rgba(8,6,4,0.5);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+}
+.jigsaw-piece {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  border: 2px solid rgba(0,0,0,0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.jigsaw-piece:hover { border-color: rgba(201,168,76,0.5); }
+.jigsaw-piece.selected { border-color: var(--gold-bright); box-shadow: 0 0 12px rgba(201,168,76,0.6); transform: scale(1.06); }
+.jigsaw-piece.correct { border-color: rgba(74,158,106,0.6); }
+.jigsaw-icon { font-size: 1.2rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8)); }
+.jigsaw-ok { position: absolute; top: 2px; right: 3px; font-size: 0.6rem; color: #4a9e6a; }
+.jigsaw-progress { display: flex; align-items: center; gap: 10px; }
+.jigsaw-bar { flex: 1; height: 4px; background: var(--border-dim); border-radius: 2px; overflow: hidden; }
+.jigsaw-fill { height: 100%; background: linear-gradient(to right, var(--gold-deep), var(--gold-main)); border-radius: 2px; }
+.jigsaw-count { font-family: var(--font-title); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-dim); white-space: nowrap; }
+
+/* ── Safe ── */
+.safe-wrap { display: flex; flex-direction: column; gap: 14px; }
+.safe-visual { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px; background: rgba(8,6,4,0.6); border: 1px solid var(--border-mid); border-radius: var(--radius-sm); }
+.safe-door-circle { font-size: 2.5rem; }
+.safe-door-label { font-family: var(--font-title); font-size: 0.62rem; letter-spacing: 0.25em; color: var(--text-dim); text-transform: uppercase; }
+.safe-clue-box { background: rgba(60,42,12,0.25); border: 1px solid var(--border-gold); border-radius: var(--radius-sm); padding: 14px 16px; }
+.safe-clue-label { font-family: var(--font-title); font-size: 0.62rem; letter-spacing: 0.15em; color: var(--gold-mid); text-transform: uppercase; margin-bottom: 6px; }
+.safe-clue-text { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--text-cream); line-height: 1.5; }
+.code-dials-wrap { display: flex; justify-content: center; }
+.code-dials { display: flex; gap: 12px; }
+.code-dial {
+  width: 56px; height: 70px;
+  background: rgba(8,6,4,0.9);
+  border: 2px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--gold-main);
+  outline: none;
+  transition: var(--transition);
+  caret-color: var(--gold-main);
+}
+.code-dial:focus { border-color: var(--gold-bright); box-shadow: 0 0 20px rgba(201,168,76,0.2); }
+
+
+.jigsaw-canvas {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  image-rendering: crisp-edges;
+}
+
+.jigsaw-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-style: italic;
+}

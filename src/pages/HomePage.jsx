@@ -5,10 +5,9 @@ import { useAuth } from '../lib/AuthContext'
 import './HomePage.css'
 
 const menuItems = [
-  { label: 'New Game',  icon: '▶',  path: '/game-menu', primary: true  },
-  { label: 'Continue',  icon: '◈',  path: '/game-menu', primary: false },
-  { label: 'Settings',  icon: '⚙',  path: '/settings',  primary: false },
-  { label: 'Profile',   icon: '◉',  path: '/profile',   primary: false },
+  { label: 'Start',    icon: '▶', path: '/game-menu', primary: true  },
+  { label: 'Settings', icon: '⚙', path: '/settings',  primary: false },
+  { label: 'Profile',  icon: '◉', path: '/profile',   primary: false },
 ]
 
 const loreFragments = [
@@ -67,11 +66,15 @@ export default function HomePage() {
           <span className="topbar-dot" />
           DUSKBOUND
         </span>
-        {user && !user.isGuest && (
+        {user ? (
           <div className="topbar-user">
             <span className="topbar-username">{user.user_metadata?.username || user.email}</span>
             <button className="topbar-signout" onClick={signOut}>Sign Out</button>
           </div>
+        ) : (
+          <button className="topbar-signout" onClick={() => navigate('/login')}>
+            Sign In / Register
+          </button>
         )}
       </motion.div>
 
@@ -157,19 +160,6 @@ export default function HomePage() {
               )}
             </motion.button>
           ))}
-
-          {!user && (
-            <motion.button
-              className="menu-btn menu-btn-ghost"
-              onClick={() => navigate('/login')}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.1, duration: 0.5 }}
-            >
-              <span className="menu-btn-icon">◎</span>
-              <span className="menu-btn-label">Sign In / Register</span>
-            </motion.button>
-          )}
         </motion.nav>
       </div>
 

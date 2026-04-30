@@ -136,21 +136,21 @@ export default function GameMenu() {
           {rooms.map((room, i) => (
             <motion.div
               key={room.id}
-              className={`room-card ${!room.unlocked ? 'room-locked' : ''} ${selected?.id === room.id ? 'room-selected' : ''}`}
-              onClick={() => room.unlocked && setSelected(room === selected ? null : room)}
+              className={`room-card ${room.id !== 'wardens-study' ? 'room-locked' : ''} ${selected?.id === room.id && room.id === 'wardens-study' ? 'room-selected' : ''}`}
+              onClick={() => room.id === 'wardens-study' && setSelected(room === selected ? null : room)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={room.unlocked ? { y: -3 } : {}}
+              whileHover={room.id === 'wardens-study' ? { y: -3 } : {}}
             >
               {/* Card top */}
               <div className="room-card-top">
                 <div className="room-icon">{room.icon}</div>
                 <div className="room-meta">
-                  {room.tag && (
-                    <span className={`room-tag ${room.tag === 'LOCKED' ? 'tag-locked' : 'tag-starter'}`}>
-                      {room.tag === 'LOCKED' ? '🔒 ' : '⭐ '}{room.tag}
-                    </span>
+                  {room.id === 'wardens-study' ? (
+                    <span className="room-tag tag-starter">⭐ STARTER</span>
+                  ) : (
+                    <span className="room-tag tag-locked">🔒 LOCKED</span>
                   )}
                   <span
                     className="room-difficulty"
@@ -172,7 +172,7 @@ export default function GameMenu() {
               <div className="room-card-footer">
                 <span className="room-stat">⏱ {room.duration}</span>
                 <span className="room-stat">🧩 {room.puzzles} puzzles</span>
-                {room.unlocked ? (
+                {room.id === 'wardens-study' ? (
                   <button
                     className="room-play-btn"
                     onClick={(e) => { e.stopPropagation(); handlePlay(room) }}
@@ -180,7 +180,7 @@ export default function GameMenu() {
                     Enter ›
                   </button>
                 ) : (
-                  <span className="room-locked-label">Complete previous rooms to unlock</span>
+                  <span className="room-locked-label">🕯 Coming Soon</span>
                 )}
               </div>
 
